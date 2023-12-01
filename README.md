@@ -1,3 +1,2 @@
 # FP2-FinalProyect
-
-muerte al genshin
+    *Now we trying to create a Chess Game
