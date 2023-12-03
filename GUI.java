@@ -2,15 +2,17 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.io.File;
 import java.util.LinkedList;
-
+import java.awt.image.BufferedImage;
+import java.awt.Image;
+import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class GUI{
-  public static void main(String[] args){
+  public static void main(String[] args)throws IOException{
     LinkedList<Piece> ps=new LinkedList<>();
-    /*BufferedImage all=ImageIO.read(new File("D:\\chess.png"));
+    /*BufferedImage all=ImageIO.read(new File("\"C:\\Users\\DELL\\Documents\\dev\\java\\WorkStation\\FP2-FinalProyect\\chess.png\""));
     Image imgs[]=new Image[12];
     int ind=0;
     for(int y=0;y<400;y+=200){
