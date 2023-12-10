@@ -4,14 +4,14 @@ public class Pokemon {
     String name;
     int level; 
     int hp;
-    Image sprite;
+    //Image sprite;
     
     // Constructor
-    public Pokemon(String name, int level, int hp, Image sprite) {
+    public Pokemon(String name, int level, int hp) {//, Image sprite
         this.name = name;
         this.level = level;
         this.hp = hp; 
-        this.sprite = sprite;
+        //this.sprite = sprite;
     }
 
     // Getters y setters
@@ -40,12 +40,12 @@ public class Pokemon {
         this.hp = hp;
     }
     
-    public Image getSprite() {
+    /*public Image getSprite() {
         return sprite; 
-    }
+    }*/
 
-    public void setSprite(Image sprite) {
+    /*public void setSprite(Image sprite) {
         this.sprite = sprite;
-    }
+    }*/
     
 }
