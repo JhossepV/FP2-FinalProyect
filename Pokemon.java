@@ -13,7 +13,6 @@ public class Pokemon {
         this.hp = hp; 
         //this.sprite = sprite;
     }
-
     // Getters y setters
     
     public String getName() {
@@ -39,6 +38,10 @@ public class Pokemon {
     public void setHp(int hp) {
         this.hp = hp;
     }
+
+    public void attack() {
+        System.out.println(getName() + " Atacó!");  
+      }
     
     /*public Image getSprite() {
         return sprite; 
@@ -47,5 +50,4 @@ public class Pokemon {
     /*public void setSprite(Image sprite) {
         this.sprite = sprite;
     }*/
-    
 }
