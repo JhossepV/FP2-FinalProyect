@@ -79,7 +79,7 @@ public class Game {
         private Image backgroundImage;
 
         public BackgroudPanel(){
-            backgroundImage = new ImageIcon("FP2-FinalProyect/Images/wallpaper1.jpg").getImage();
+            backgroundImage = new ImageIcon("Images/wallpaper1.jpg").getImage();
         }
         public Image getBackgroundImage(){
             return backgroundImage;
