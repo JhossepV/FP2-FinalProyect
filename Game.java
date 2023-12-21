@@ -25,9 +25,9 @@ public class Game {
         container.setLayout(null);
 
         // Estableciendo fondo
-        BackgroudPanel backgroudPanel = new BackgroudPanel();
-        container.add(backgroudPanel);
-        backgroudPanel.setBounds(0, 0, 1280, 720);
+        BackgroudnPanel backgroundPanel = new BackgroudnPanel("FP2-FinalProyect/Images/Wallpaper/wallpaper1.jpg");
+        container.add(backgroundPanel);
+        backgroundPanel.setBounds(0, 0, 1280, 720);
 
         // Sección del botón "A Peleeear!"
         fightButton = new JButton("A Peleeear!");
@@ -39,13 +39,13 @@ public class Game {
                 cardLayout.show(cardPanel, "playerPanel");
             }
         });
-        backgroudPanel.add(fightButton);
+        backgroundPanel.add(fightButton);
 
         // Segunda Sección
         cardPanel = new JPanel(new CardLayout());
         container.add(cardPanel);
         cardPanel.setBounds(0, 0, 1280, 720);
-        cardPanel.add(backgroudPanel, "background");
+        cardPanel.add(backgroundPanel, "background");
 
         // Configuración elementos visuales en la sección "playerPanel"
         playerPanel = new JPanel(new BorderLayout());
@@ -75,7 +75,7 @@ public class Game {
                 cardLayout.show(cardPanel, "background");
             }
         });
-        playerPanel.add(backToFightButton, BorderLayout.SOUTH);
+        playerPanel.add(backToFightButton, BorderLayout.NORTH);
 
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -90,16 +90,16 @@ public class Game {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private class BackgroudPanel extends JPanel {
+    private class BackgroudnPanel extends JPanel {
         private Image backgroundImage;
 
-        public BackgroudPanel() {
-            backgroundImage = new ImageIcon("FP2-FinalProyect/Images/Wallpaper/wallpaper1.jpg").getImage();
+        public BackgroudnPanel(String w) {
+            backgroundImage = new ImageIcon(w).getImage();
         }
 
-        public Image getBackgroundImage() {
+        /*public Image getBackgroundImage() {
             return backgroundImage;
-        }
+        }*/
 
         @Override
         protected void paintComponent(Graphics g) {
