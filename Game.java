@@ -144,7 +144,7 @@ public class Game extends JFrame {
         };
     
         // Usar un GridLayout para colocar las imágenes de los Pokémon uno al lado del otro
-        GridLayout gridLayout = new GridLayout(1, 2);
+        GridLayout gridLayout = new GridLayout(2, 1);
         gameplayPanel.setLayout(gridLayout);
     
         // Mostrar imágenes de los Pokémon
