@@ -1,20 +1,21 @@
-public class Pokemon {
+import javax.swing.ImageIcon;
 
-    // Atributos de los Pokemones, el Image es por una idea que vi, capaz funciona para los sprites de los pokemos, pero aun no se xD
-    String name;
-    int level; 
-    int hp;
-    //Image sprite;
-    
+public class Pokemon {
+    private String name;
+    private int level;
+    private int hp;
+    private ImageIcon sprite; // Agregamos una propiedad para la imagen del Pokemon
+
     // Constructor
-    public Pokemon(String name, int level, int hp) {//, Image sprite
+    public Pokemon(String name, int level, int hp, String spritePath) {
         this.name = name;
         this.level = level;
-        this.hp = hp; 
-        //this.sprite = sprite;
+        this.hp = hp;
+        this.sprite = new ImageIcon(spritePath);
     }
+
     // Getters y setters
-    
+
     public String getName() {
         return name;
     }
@@ -30,7 +31,7 @@ public class Pokemon {
     public void setLevel(int level) {
         this.level = level;
     }
-    
+
     public int getHp() {
         return hp;
     }
@@ -39,15 +40,15 @@ public class Pokemon {
         this.hp = hp;
     }
 
-    public void attack() {
-        System.out.println(getName() + " Atacó!");  
-      }
-    
-    /*public Image getSprite() {
-        return sprite; 
-    }*/
+    public ImageIcon getSprite() {
+        return sprite;
+    }
 
-    /*public void setSprite(Image sprite) {
+    public void setSprite(ImageIcon sprite) {
         this.sprite = sprite;
-    }*/
+    }
+
+    public void attack() {
+        System.out.println(getName() + " Atacó!");
+    }
 }

@@ -1,7 +1,7 @@
 public class Squirtle extends Pokemon {
 
     public Squirtle() {
-        super("Squirtle", 5, 100);
+        super("Squirtle", 5, 100, "");
     }
 
     @Override

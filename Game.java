@@ -2,113 +2,183 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class Game {
+public class Game extends JFrame {
+    private CardLayout cardLayout;
+    private JPanel cardPanel;
 
-    JFrame window;
-    Container container;
-    JButton fightButton;
-    JPanel cardPanel;
-    JPanel playerPanel;
+    private Pokemon bulbasaur;
+    private Pokemon pikachu;
 
     public Game() {
+        // Configuración básica de la ventana
+        setTitle("Juego por Turnos");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1280, 720);
+        setLocationRelativeTo(null);
 
-        // Configuración de la ventana de juego
-        window = new JFrame();
-        window.setTitle("Pokemon Battle");
-        window.setSize(1280, 720);
+        // Crear un CardLayout para gestionar los paneles
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
 
-        // Elementos visuales
-        container = window.getContentPane();
-        container.setLayout(null);
+        // Crear instancias de los Pokémon Bulbasaur y Pikachu
+        bulbasaur = new Pokemon("Bulbasaur", 5, 100, "FP2_FinalTest/Images/Bulbasaur/bulbasaur.gif");
+        pikachu = new Pokemon("Pikachu", 5, 100, "FP2_FinalTest/Images/Pikachu/pikachu.gif");
 
-        // Estableciendo fondo
-        BackgroudnPanel backgroundPanel = new BackgroudnPanel("FP2-FinalProyect/Images/Wallpaper/wallpaper1.jpg");
-        container.add(backgroundPanel);
-        backgroundPanel.setBounds(0, 0, 1280, 720);
+        // Crear el panel del menú con fondo
+        JPanel menuPanel = createMenuPanel();
+        cardPanel.add(menuPanel, "Menu");
 
-        // Sección del botón "A Peleeear!"
-        fightButton = new JButton("A Peleeear!");
-        fightButton.setBounds(50, 300, 150, 50);
-        fightButton.addActionListener(new ActionListener() {
+        // Crear el panel del gameplay con fondo
+        JPanel gameplayPanel = createGameplayPanel();
+        cardPanel.add(gameplayPanel, "Gameplay");
+
+        // Mostrar el panel del menú inicialmente
+        cardLayout.show(cardPanel, "Menu");
+
+        // Agregar el panel al contenedor de la ventana
+        add(cardPanel);
+
+        // Agregar ActionListener para manejar eventos de botones
+        JButton btnNuevoJuego = findButton(menuPanel, "Nuevo Juego");
+        btnNuevoJuego.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-                cardLayout.show(cardPanel, "playerPanel");
+                // Cambiar al panel de gameplay al presionar "Nuevo juego"
+                cardLayout.show(cardPanel, "Gameplay");
             }
         });
-        backgroundPanel.add(fightButton);
 
-        // Segunda Sección
-        cardPanel = new JPanel(new CardLayout());
-        container.add(cardPanel);
-        cardPanel.setBounds(0, 0, 1280, 720);
-        cardPanel.add(backgroundPanel, "background");
-
-        // Configuración elementos visuales en la sección "playerPanel"
-        playerPanel = new JPanel(new BorderLayout());
-        JButton player1Button = new JButton("Jugador 1");
-        JButton player2Button = new JButton("Jugador 2");
-        playerPanel.add(player1Button, BorderLayout.WEST);
-        playerPanel.add(player2Button, BorderLayout.EAST);
-        cardPanel.add(playerPanel, "playerPanel");
-
-        // Crear instancia de Bulbasaur
-        Bulbasaur bulbasaur = new Bulbasaur();
-
-        // Configurar la imagen del jugador con la animación de Bulbasaur
-        JLabel playerLabel = new JLabel();
-        playerLabel.setIcon(new ImageIcon(bulbasaur.getCurrentAnimationFrame()));
-        playerPanel.add(playerLabel, BorderLayout.CENTER);
-
-        // Iniciar la animación de Bulbasaur
-        bulbasaur.playAnimation();
-
-        // Configurar el botón de combate en la sección "playerPanel"
-        JButton backToFightButton = new JButton("Volver a Pelear");
-        backToFightButton.addActionListener(new ActionListener() {
+        // Botón para regresar al menú desde la sección de gameplay
+        JButton btnVolverMenu = findButton(gameplayPanel, "Volver al Menú");
+        btnVolverMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-                cardLayout.show(cardPanel, "background");
+                // Cambiar al panel del menú al presionar "Volver al Menú"
+                cardLayout.show(cardPanel, "Menu");
             }
         });
-        playerPanel.add(backToFightButton, BorderLayout.NORTH);
 
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+        JButton btnSalir = findButton(menuPanel, "Salir");
+        btnSalir.addActionListener(new ActionListener() {
             @Override
-            public void run() {
-                ImageIcon newIcon = new ImageIcon(bulbasaur.getCurrentAnimationFrame());
-                playerLabel.setIcon(newIcon);
+            public void actionPerformed(ActionEvent e) {
+                // Agregar lógica para salir del juego
+                // En este caso, cerramos la aplicación
+                System.exit(0);
             }
-        }, 0, 150);
-
-        window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        });
     }
 
-    private class BackgroudnPanel extends JPanel {
-        private Image backgroundImage;
-
-        public BackgroudnPanel(String w) {
-            backgroundImage = new ImageIcon(w).getImage();
+    private JButton findButton(Container container, String buttonText) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                if (button.getText().equals(buttonText)) {
+                    return button;
+                }
+            }
         }
-
-        /*public Image getBackgroundImage() {
-            return backgroundImage;
-        }*/
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.drawImage(backgroundImage, 0, 0, this);
-        }
+        return null;
     }
+
+    private JPanel createMenuPanel() {
+        // Crear un panel para el menú con un fondo
+        JPanel menuPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
+                ImageIcon backgroundImage = new ImageIcon("FP2_FinalTest/Images/Wallpaper/wallpaper1.jpg");
+                g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+
+        // Espacio horizontal al principio
+        menuPanel.add(Box.createHorizontalStrut(20));
+
+        // Espacio vertical arriba
+        menuPanel.add(Box.createVerticalGlue());
+
+        // Botones del menú
+        JButton btnNuevoJuego = new JButton("Nuevo Juego");
+        btnNuevoJuego.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+
+        JButton btnCargarJuego = new JButton("Cargar Partida");
+        btnCargarJuego.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+
+        JButton btnSalir = new JButton("Salir");
+        btnSalir.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+
+        // Agregar botones al panel
+        menuPanel.add(btnNuevoJuego);
+        menuPanel.add(Box.createVerticalStrut(20)); // Espacio vertical
+        menuPanel.add(btnCargarJuego);
+        menuPanel.add(Box.createVerticalStrut(20)); // Espacio vertical
+        menuPanel.add(btnSalir);
+
+        // Espacio vertical abajo
+        menuPanel.add(Box.createVerticalGlue());
+
+        // Espacio horizontal al final
+        menuPanel.add(Box.createHorizontalStrut(20));
+
+        // Configurar alineación del panel al centro horizontal
+        menuPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        return menuPanel;
+    }
+
+    private JPanel createGameplayPanel() {
+        // Crear un panel para el gameplay con un fondo
+        JPanel gameplayPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
+                ImageIcon backgroundImage = new ImageIcon("FP2_FinalTest/Images/Wallpaper/wallpaperBattle.jpg");
+                g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+    
+        // Usar un GridLayout para colocar las imágenes de los Pokémon uno al lado del otro
+        GridLayout gridLayout = new GridLayout(1, 2);
+        gameplayPanel.setLayout(gridLayout);
+    
+        // Mostrar imágenes de los Pokémon
+        JLabel lblBulbasaur = new JLabel(bulbasaur.getSprite());
+        JLabel lblPikachu = new JLabel(pikachu.getSprite());
+    
+        gameplayPanel.add(lblBulbasaur);
+        gameplayPanel.add(lblPikachu);
+    
+        // Botones del gameplay
+        JButton btnAtaqueBasico = new JButton("Ataque Básico");
+        btnAtaqueBasico.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+    
+        JButton btnHabilidadDefinitiva = new JButton("Habilidad Definitiva");
+        btnHabilidadDefinitiva.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+    
+        JButton btnVolverMenu = new JButton("Volver al Menú");
+        btnVolverMenu.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+    
+        // Agregar botones al panel
+        gameplayPanel.add(btnAtaqueBasico);
+        gameplayPanel.add(btnHabilidadDefinitiva);
+        gameplayPanel.add(btnVolverMenu);
+    
+        return gameplayPanel;
+    }
+    
 
     public static void main(String[] args) {
-        new Game();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Game().setVisible(true);
+            }
+        });
     }
 }

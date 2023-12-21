@@ -10,7 +10,7 @@ public class Bulbasaur extends Pokemon {
     private int currentFrameIndex;
 
     public Bulbasaur() {
-        super("Bulbasaur", 5, 100);
+        super("Bulbasaur", 5, 100, "");
         loadAnimationFrames();
     }
     
