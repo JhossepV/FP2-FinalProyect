@@ -22,8 +22,8 @@ public class Game extends JFrame {
         cardPanel = new JPanel(cardLayout);
 
         // Crear instancias de los Pokémon Bulbasaur y Pikachu
-        bulbasaur = new Pokemon("Bulbasaur", 5, 100, "FP2_FinalTest/Images/Bulbasaur/bulbasaur.gif");
-        pikachu = new Pokemon("Pikachu", 5, 100, "FP2_FinalTest/Images/Pikachu/pikachu.gif");
+        bulbasaur = new Pokemon("Bulbasaur", 5, 100, "Images/Bulbasaur/bulbasaur.gif");
+        pikachu = new Pokemon("Pikachu", 5, 100, "Images/Pikachu/pikachu.gif");
 
         // Crear el panel del menú con fondo
         JPanel menuPanel = createMenuPanel();
@@ -90,7 +90,7 @@ public class Game extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
-                ImageIcon backgroundImage = new ImageIcon("FP2_FinalTest/Images/Wallpaper/wallpaper1.jpg");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaper1.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -138,7 +138,7 @@ public class Game extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
-                ImageIcon backgroundImage = new ImageIcon("FP2_FinalTest/Images/Wallpaper/wallpaperBattle.jpg");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperBattle.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
