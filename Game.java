@@ -49,15 +49,7 @@ public class Game extends JFrame {
             }
         });
 
-        // Botón para regresar al menú desde la sección de gameplay
-        JButton btnVolverMenu = findButton(gameplayPanel, "Volver al Menú");
-        btnVolverMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Cambiar al panel del menú al presionar "Volver al Menú"
-                cardLayout.show(cardPanel, "Menu");
-            }
-        });
+        
 
         JButton btnSalir = findButton(menuPanel, "Salir");
         btnSalir.addActionListener(new ActionListener() {
@@ -95,6 +87,7 @@ public class Game extends JFrame {
             }
         };
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        
 
         // Espacio horizontal al principio
         menuPanel.add(Box.createHorizontalStrut(20));
@@ -142,36 +135,53 @@ public class Game extends JFrame {
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-    
+
         // Usar un GridLayout para colocar las imágenes de los Pokémon uno al lado del otro
         GridLayout gridLayout = new GridLayout(2, 1);
         gameplayPanel.setLayout(gridLayout);
-    
+
         // Mostrar imágenes de los Pokémon
         JLabel lblBulbasaur = new JLabel(bulbasaur.getSprite());
         JLabel lblPikachu = new JLabel(pikachu.getSprite());
-    
+
         gameplayPanel.add(lblBulbasaur);
         gameplayPanel.add(lblPikachu);
-    
+
+        // Crear un panel para los botones de gameplay
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+
         // Botones del gameplay
         JButton btnAtaqueBasico = new JButton("Ataque Básico");
         btnAtaqueBasico.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
-    
+
         JButton btnHabilidadDefinitiva = new JButton("Habilidad Definitiva");
         btnHabilidadDefinitiva.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
-    
+
+        // Botón para regresar al menú desde la sección de gameplay
         JButton btnVolverMenu = new JButton("Volver al Menú");
         btnVolverMenu.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
-    
+        btnVolverMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Cambiar al panel del menú al presionar "Volver al Menú"
+                cardLayout.show(cardPanel, "Menu");
+            }
+        });
+
         // Agregar botones al panel
-        gameplayPanel.add(btnAtaqueBasico);
-        gameplayPanel.add(btnHabilidadDefinitiva);
-        gameplayPanel.add(btnVolverMenu);
-    
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(btnAtaqueBasico);
+        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
+        buttonPanel.add(btnHabilidadDefinitiva);
+        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
+        buttonPanel.add(btnVolverMenu);
+        buttonPanel.add(Box.createHorizontalGlue());
+        // Agregar el panel de botones al centro inferior
+        gameplayPanel.add(buttonPanel, BorderLayout.SOUTH);
+
         return gameplayPanel;
     }
-    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
