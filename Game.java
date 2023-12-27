@@ -133,47 +133,55 @@ public class Game extends JFrame {
             }
         };
 
-        // Usar un GridLayout para colocar las imágenes de los Pokémon uno al lado del otro
-        GridLayout gridLayout = new GridLayout(2, 1);
-        gameplayPanel.setLayout(gridLayout);
+        // Usar GridBagLayout para colocar las imágenes y los botones
+        gameplayPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
         // Mostrar imágenes de los Pokémon
+        gbc.gridx = 0;
+        gbc.gridy = 0; // Ajusta este valor para mover la imagen de Bulbasaur más arriba
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(0, 0, 40, 0); // Ajusta el valor de la parte inferior para agregar espacio
         JLabel lblBulbasaur = new JLabel(bulbasaur.getSprite());
-        JLabel lblPikachu = new JLabel(pikachu.getSprite());
+        gameplayPanel.add(lblBulbasaur, gbc);
 
-        gameplayPanel.add(lblBulbasaur);
-        gameplayPanel.add(lblPikachu);
+        gbc.gridx = 3;
+        gbc.gridwidth = 2;
+        JLabel lblPikachu = new JLabel(pikachu.getSprite());
+        gameplayPanel.add(lblPikachu, gbc);
+
 
         // Crear un panel para los botones de gameplay
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 
         // Botones del gameplay
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(0, 0, 0, 0);
         JButton btnAtaqueBasico1 = new JButton("Ataque Básico");
         btnAtaqueBasico1.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+        gameplayPanel.add(btnAtaqueBasico1, gbc);
 
+        gbc.gridx = 2;
+        gbc.insets = new Insets(0, 0, 0, 0);
         JButton btnHabilidadDefinitiva1 = new JButton("Habilidad Definitiva");
         btnHabilidadDefinitiva1.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+        gameplayPanel.add(btnHabilidadDefinitiva1, gbc);
 
+        gbc.gridx = 3;
+        gbc.insets = new Insets(0, 0, 0, 0);
         JButton btnAtaqueBasico2 = new JButton("Ataque Básico");
         btnAtaqueBasico2.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+        gameplayPanel.add(btnAtaqueBasico2, gbc);
 
+        gbc.gridx = 4;
+        gbc.insets = new Insets(0, 0, 0, 0);
         JButton btnHabilidadDefinitiva2 = new JButton("Habilidad Definitiva");
         btnHabilidadDefinitiva2.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+        gameplayPanel.add(btnHabilidadDefinitiva2, gbc);
 
-        // Agregar botones al panel
-        buttonPanel.add(Box.createHorizontalGlue());
-        buttonPanel.add(btnAtaqueBasico1);
-        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
-        buttonPanel.add(btnHabilidadDefinitiva1);
-        buttonPanel.add(Box.createHorizontalStrut(100)); // Espacio horizontal
-        buttonPanel.add(btnAtaqueBasico2);
-        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
-        buttonPanel.add(btnHabilidadDefinitiva2);
-        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
-
-        // Agregar el panel de botones al centro inferior
-        gameplayPanel.add(buttonPanel, BorderLayout.CENTER);
 
         // Botón para regresar al menú desde la sección de gameplay
         JButton btnVolverMenu = new JButton("Volver al Menú");
@@ -186,9 +194,12 @@ public class Game extends JFrame {
             }
         });
 
-        // Agregar el botón "Volver al Menú" superpuesto sobre otros componentes
-        btnVolverMenu.setBounds(10, 10, 160, 60);
-        gameplayPanel.add(btnVolverMenu);
+        // Agregar botón al final
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = 4;
+        gbc.insets = new Insets(40, 0, 0, 0);
+        gameplayPanel.add(btnVolverMenu, gbc);
 
         return gameplayPanel;
     }
