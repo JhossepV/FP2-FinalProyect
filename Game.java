@@ -49,8 +49,6 @@ public class Game extends JFrame {
             }
         });
 
-        
-
         JButton btnSalir = findButton(menuPanel, "Salir");
         btnSalir.addActionListener(new ActionListener() {
             @Override
@@ -87,7 +85,6 @@ public class Game extends JFrame {
             }
         };
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
-        
 
         // Espacio horizontal al principio
         menuPanel.add(Box.createHorizontalStrut(20));
@@ -152,11 +149,31 @@ public class Game extends JFrame {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 
         // Botones del gameplay
-        JButton btnAtaqueBasico = new JButton("Ataque Básico");
-        btnAtaqueBasico.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+        JButton btnAtaqueBasico1 = new JButton("Ataque Básico");
+        btnAtaqueBasico1.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
 
-        JButton btnHabilidadDefinitiva = new JButton("Habilidad Definitiva");
-        btnHabilidadDefinitiva.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+        JButton btnHabilidadDefinitiva1 = new JButton("Habilidad Definitiva");
+        btnHabilidadDefinitiva1.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+
+        JButton btnAtaqueBasico2 = new JButton("Ataque Básico");
+        btnAtaqueBasico2.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+
+        JButton btnHabilidadDefinitiva2 = new JButton("Habilidad Definitiva");
+        btnHabilidadDefinitiva2.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
+
+        // Agregar botones al panel
+        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(btnAtaqueBasico1);
+        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
+        buttonPanel.add(btnHabilidadDefinitiva1);
+        buttonPanel.add(Box.createHorizontalStrut(100)); // Espacio horizontal
+        buttonPanel.add(btnAtaqueBasico2);
+        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
+        buttonPanel.add(btnHabilidadDefinitiva2);
+        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
+
+        // Agregar el panel de botones al centro inferior
+        gameplayPanel.add(buttonPanel, BorderLayout.CENTER);
 
         // Botón para regresar al menú desde la sección de gameplay
         JButton btnVolverMenu = new JButton("Volver al Menú");
@@ -169,16 +186,9 @@ public class Game extends JFrame {
             }
         });
 
-        // Agregar botones al panel
-        buttonPanel.add(Box.createHorizontalGlue());
-        buttonPanel.add(btnAtaqueBasico);
-        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
-        buttonPanel.add(btnHabilidadDefinitiva);
-        buttonPanel.add(Box.createHorizontalStrut(20)); // Espacio horizontal
-        buttonPanel.add(btnVolverMenu);
-        buttonPanel.add(Box.createHorizontalGlue());
-        // Agregar el panel de botones al centro inferior
-        gameplayPanel.add(buttonPanel, BorderLayout.SOUTH);
+        // Agregar el botón "Volver al Menú" superpuesto sobre otros componentes
+        btnVolverMenu.setBounds(10, 10, 160, 60);
+        gameplayPanel.add(btnVolverMenu);
 
         return gameplayPanel;
     }
