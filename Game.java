@@ -42,7 +42,6 @@ public class Game extends JFrame {
         // Agregar ActionListener para manejar eventos de botones
         JButton btnNuevoJuego = findButton(menuPanel, "Nuevo Juego");
         btnNuevoJuego.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 // Cambiar al panel de gameplay al presionar "Nuevo juego"
                 cardLayout.show(cardPanel, "Gameplay");
@@ -51,7 +50,6 @@ public class Game extends JFrame {
 
         JButton btnSalir = findButton(menuPanel, "Salir");
         btnSalir.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 // Agregar lógica para salir del juego
                 // En este caso, cerramos la aplicación
@@ -76,7 +74,6 @@ public class Game extends JFrame {
     private JPanel createMenuPanel() {
         // Crear un panel para el menú con un fondo
         JPanel menuPanel = new JPanel() {
-            @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
@@ -124,7 +121,6 @@ public class Game extends JFrame {
     private JPanel createGameplayPanel() {
         // Crear un panel para el gameplay con un fondo
         JPanel gameplayPanel = new JPanel() {
-            @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
@@ -182,7 +178,6 @@ public class Game extends JFrame {
         JButton btnVolverMenu = new JButton("Volver al Menú");
         btnVolverMenu.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
         btnVolverMenu.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 // Cambiar al panel del menú al presionar "Volver al Menú"
                 cardLayout.show(cardPanel, "Menu");
@@ -201,7 +196,6 @@ public class Game extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new Game().setVisible(true);
             }

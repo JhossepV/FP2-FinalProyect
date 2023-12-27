@@ -4,7 +4,7 @@ public class Pokemon {
     private String name;
     private int level;
     private int hp;
-    private ImageIcon sprite; // Agregamos una propiedad para la imagen del Pokemon
+    private ImageIcon sprite; // Imagen del pokemon
 
     // Constructor
     public Pokemon(String name, int level, int hp, String spritePath) {
@@ -15,7 +15,6 @@ public class Pokemon {
     }
 
     // Getters y setters
-
     public String getName() {
         return name;
     }
