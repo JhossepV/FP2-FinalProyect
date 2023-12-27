@@ -150,11 +150,6 @@ public class Game extends JFrame {
         JLabel lblPikachu = new JLabel(pikachu.getSprite());
         gameplayPanel.add(lblPikachu, gbc);
 
-
-        // Crear un panel para los botones de gameplay
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
-
         // Botones del gameplay
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -165,19 +160,19 @@ public class Game extends JFrame {
         gameplayPanel.add(btnAtaqueBasico1, gbc);
 
         gbc.gridx = 2;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.insets = new Insets(0, 0, 0, 140);
         JButton btnHabilidadDefinitiva1 = new JButton("Habilidad Definitiva");
         btnHabilidadDefinitiva1.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
         gameplayPanel.add(btnHabilidadDefinitiva1, gbc);
 
         gbc.gridx = 3;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.insets = new Insets(0, 60, 0, 100);
         JButton btnAtaqueBasico2 = new JButton("Ataque Básico");
         btnAtaqueBasico2.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
         gameplayPanel.add(btnAtaqueBasico2, gbc);
 
         gbc.gridx = 4;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.insets = new Insets(0, 80, 0, 0);
         JButton btnHabilidadDefinitiva2 = new JButton("Habilidad Definitiva");
         btnHabilidadDefinitiva2.setPreferredSize(new Dimension(160, 60)); // Ajustar el tamaño
         gameplayPanel.add(btnHabilidadDefinitiva2, gbc);
@@ -198,7 +193,7 @@ public class Game extends JFrame {
         gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.gridwidth = 4;
-        gbc.insets = new Insets(40, 0, 0, 0);
+        gbc.insets = new Insets(70, 0, 0, 100);
         gameplayPanel.add(btnVolverMenu, gbc);
 
         return gameplayPanel;
