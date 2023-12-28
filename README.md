@@ -1,2 +1,2 @@
 # FP2-FinalProyect
-    *Now we trying to create a Pokemon Game
+    *Now we trying to create a Pokemon Fight Game
