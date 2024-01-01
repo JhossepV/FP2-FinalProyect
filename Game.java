@@ -9,6 +9,8 @@ public class Game extends JFrame {
 
     private Pokemon bulbasaur;
     private Pokemon pikachu;
+    private Pokemon charmander;
+    private Pokemon squirtle;
 
     public Game() {
         // Configuración básica de la ventana
@@ -20,7 +22,7 @@ public class Game extends JFrame {
         // Crear un CardLayout para gestionar los paneles
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-
+ 
         // Crear instancias de los Pokémon Bulbasaur y Pikachu
         bulbasaur = new Pokemon("Bulbasaur", 5, 100, "Images/Bulbasaur/bulbasaur.gif");
         pikachu = new Pokemon("Pikachu", 5, 100, "Images/Pikachu/pikachu.gif");
@@ -28,6 +30,10 @@ public class Game extends JFrame {
         // Crear el panel del menú con fondo
         JPanel menuPanel = createMenuPanel();
         cardPanel.add(menuPanel, "Menu");
+
+        // Crear el panel de seleccion de personajes
+        JPanel selectionPanel = createSelectionPanel();
+        cardPanel.add(selectionPanel, "Selection");
 
         // Crear el panel del gameplay con fondo
         JPanel gameplayPanel = createGameplayPanel();
@@ -44,7 +50,7 @@ public class Game extends JFrame {
         btnNuevoJuego.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Cambiar al panel de gameplay al presionar "Nuevo juego"
-                cardLayout.show(cardPanel, "Gameplay");
+                cardLayout.show(cardPanel, "Selection");
             }
         });
 
@@ -116,6 +122,31 @@ public class Game extends JFrame {
         menuPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         return menuPanel;
+    }
+    private JPanel createSelectionPanel(){
+        JPanel selectionPanel = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperSelection.jpg");
+                g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        // Usar un layout específico para este panel (puedes ajustarlo según tus necesidades)
+        selectionPanel.setLayout(new BoxLayout(selectionPanel, BoxLayout.Y_AXIS));
+
+        // Crear componentes para la selección (puedes agregar botones u otros elementos aquí)
+        JButton btnOpcion1 = new JButton("Opción 1");
+        JButton btnOpcion2 = new JButton("Opción 2");
+
+        // Agregar componentes al panel de selección
+        selectionPanel.add(btnOpcion1);
+        selectionPanel.add(Box.createVerticalStrut(20)); // Espacio vertical
+        selectionPanel.add(btnOpcion2);
+
+        // Puedes agregar más componentes según tus necesidades
+
+        return selectionPanel;
     }
 
     private JPanel createGameplayPanel() {
