@@ -132,7 +132,7 @@ public class Game extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Cargar la imagen de fondo desde un archivo (ajusta la ruta según sea necesario)
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaper2.jpg");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaper3.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
