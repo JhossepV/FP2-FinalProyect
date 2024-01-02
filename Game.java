@@ -85,10 +85,9 @@ public class Game extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.gridwidth = 2;
         gbc.insets = new Insets(0, 0, 40, 0);
         JLabel lblTitle = new JLabel("Juego por Turnos");
-        lblTitle.setFont(new Font("Arial", Font.BOLD, 30));
+        lblTitle.setFont(new Font("Arial", Font.BOLD, 90));
         lblTitle.setForeground(Color.WHITE);
         mainMenuPanel.add(lblTitle, gbc);
 
@@ -100,13 +99,12 @@ public class Game extends JFrame {
         btnNewGame.setPreferredSize(new Dimension(200, 60));
         mainMenuPanel.add(btnNewGame, gbc);
 
-        gbc.gridx = 1;
+        gbc.gridy = 2;
         JButton btnLoadGame = new JButton("Cargar Partida");
         btnLoadGame.setPreferredSize(new Dimension(200, 60));
         mainMenuPanel.add(btnLoadGame, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         JButton btnExit = new JButton("Salir");
         btnExit.setPreferredSize(new Dimension(200, 60));
         mainMenuPanel.add(btnExit, gbc);
