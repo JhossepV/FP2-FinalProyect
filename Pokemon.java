@@ -5,13 +5,17 @@ public class Pokemon {
     private int level;
     private int hp;
     private ImageIcon sprite; // Imagen del pokemon
+    private int critDmg;
+    private int critRate;
 
     // Constructor
-    public Pokemon(String name, int level, int hp, String spritePath) {
+    public Pokemon(String name, int level, int hp, String spritePath, int critDmg, int critRate) {
         this.name = name;
         this.level = level;
         this.hp = hp;
         this.sprite = new ImageIcon(spritePath);
+        this.critDmg = critDmg;
+        this.critRate = critRate;
     }
 
     // Getters y setters
@@ -45,5 +49,21 @@ public class Pokemon {
 
     public void setSprite(ImageIcon sprite) {
         this.sprite = sprite;
+    }
+
+    public int getCritDmg() {
+        return critDmg;
+    }
+
+    public void setCritDmg(int critDmg) {
+        this.critDmg = critDmg;
+    }
+
+    public int getCritRate() {
+        return critRate;
+    }
+    
+    public void setCritRate(int critRate) {
+        this.critRate = critRate;
     }
 }

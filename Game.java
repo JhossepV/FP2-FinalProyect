@@ -30,6 +30,8 @@ public class Game extends JFrame {
         pikachu = new Bulbasaur();
         charizard = new Charizard();
         squirtle = new Squirtle();
+        diito = new Ditto();
+        eevee = new Eevee();
 
         // Crear el panel del menú con fondo
         JPanel menuPanel = createMenuPanel();
@@ -168,13 +170,27 @@ public class Game extends JFrame {
         gbc.insets = new Insets(0, 0, 20, 20);
         JLabel lblPokemon4 = new JLabel(squirtle.getSprite());
         selectionPanel.add(lblPokemon4, gbc);
+
+        // Pokémon 5
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.insets = new Insets(0, 20, 20, 20);
+        JLabel lblPokemon5 = new JLabel(diito.getSprite());
+        selectionPanel.add(lblPokemon5, gbc);
+
+        // Pokémon 6
+        gbc.gridx = 2;
+        gbc.gridy = 1;
+        gbc.insets = new Insets(0, 20, 20, 20);
+        JLabel lblPokemon6 = new JLabel(eevee.getSprite());
+        selectionPanel.add(lblPokemon6, gbc);
     
         gbc.gridx = 0;
         gbc.gridy = 1;
         JTextField txtPokemon1 = new JTextField(15); // Ajustar el tamaño según sea necesario
         selectionPanel.add(txtPokemon1, gbc);
 
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         gbc.gridy = 1;
         JTextField txtPokemon2 = new JTextField(15); // Ajustar el tamaño según sea necesario
         selectionPanel.add(txtPokemon2, gbc);
@@ -190,8 +206,8 @@ public class Game extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Lógica para confirmar la selección y pasar al panel de gameplay
                 // Puedes obtener los nombres ingresados en los cuadros de texto
-                String nombrePokemon1 = txtPokemon1.getText();
-                String nombrePokemon2 = txtPokemon2.getText();
+                /*String nombrePokemon1 = txtPokemon1.getText();
+                String nombrePokemon2 = txtPokemon2.getText();*/
                 // Realizar las acciones necesarias antes de cambiar al panel de gameplay
                 // ...
     
