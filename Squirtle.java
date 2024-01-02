@@ -1,12 +1,6 @@
 public class Squirtle extends Pokemon {
-
     public Squirtle() {
-        super("Squirtle", 5, 100, "");
+        super("Squirtle", 90, 90, "Images/Squirtle/squirtle.gif");
+        learnAttack("Ataque Básico", 40);
     }
-
-    @Override
-    public void attack() {
-        System.out.println(getName() + " uso Cañon de Agua!");
-    }
-
 }

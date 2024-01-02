@@ -1,11 +1,6 @@
 public class Pikachu extends Pokemon {
-
     public Pikachu() {
-        super("Pikachu", 5, 100, "");
+        super("Pikachu", 100, 100, "Images/Pikachu/pikachu.gif");
+        learnAttack("Ataque Básico", 30);
     }
-
-    public void attack() {
-        System.out.println(getName() + " uso Impact Trueno!");
-    }
-
 }
