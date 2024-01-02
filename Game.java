@@ -117,6 +117,7 @@ public class Game extends JFrame {
 
         btnLoadGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                //GUARDAR PARTIDA
                 cardLayout.show(cardPanel, "Selection");
             }
         });
