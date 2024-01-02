@@ -10,7 +10,6 @@ public class Pokemon {
     private int level;
     private int hp;
     private boolean isDefending;
-    private int lastHealing;
     private ImageIcon sprite;
     private List<Attack> attacks;
 
