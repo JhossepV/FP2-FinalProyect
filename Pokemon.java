@@ -46,8 +46,4 @@ public class Pokemon {
     public void setSprite(ImageIcon sprite) {
         this.sprite = sprite;
     }
-
-    public void attack() {
-        System.out.println(getName() + " Atacó!");
-    }
 }
