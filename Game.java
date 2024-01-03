@@ -60,12 +60,12 @@ public class Game extends JFrame {
             }
         });
 
-        btnAttack1Player1 = new JButton("Ataque 1");
+        btnAttack1Player1 = new JButton("Ataque Basico");
         btnDefendPlayer1 = new JButton("Defender");
         btnUltimatePlayer1 = new JButton("Habilidad Definitiva");
         btnHealPlayer1 = new JButton("Curar");
 
-        btnAttack1Player2 = new JButton("Ataque 1");
+        btnAttack1Player2 = new JButton("Ataque Basico");
         btnDefendPlayer2 = new JButton("Defender");
         btnUltimatePlayer2 = new JButton("Habilidad Definitiva");
         btnHealPlayer2 = new JButton("Curar");
@@ -75,7 +75,7 @@ public class Game extends JFrame {
         JPanel mainMenuPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperMainMenu.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/menu.jpeg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -94,7 +94,7 @@ public class Game extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.insets = new Insets(0, 0, 20, 0);
         JButton btnNewGame = new JButton("Nuevo Juego");
         btnNewGame.setPreferredSize(new Dimension(200, 60));
         mainMenuPanel.add(btnNewGame, gbc);
@@ -148,7 +148,7 @@ public class Game extends JFrame {
         JPanel selectionPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperSelection.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/selection.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -157,7 +157,7 @@ public class Game extends JFrame {
 
         JLabel lblTitle = new JLabel("Selección de Pokémon");
         lblTitle.setFont(new Font("Arial", Font.BOLD, 40));
-        lblTitle.setForeground(Color.RED);
+        lblTitle.setForeground(Color.BLUE);
         lblTitle.setHorizontalAlignment(JLabel.CENTER);
         selectionPanel.add(lblTitle, BorderLayout.NORTH);
 
@@ -208,7 +208,7 @@ public class Game extends JFrame {
         JPanel gameplayPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperBattle.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/wallpaperBattle2.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -230,8 +230,9 @@ public class Game extends JFrame {
             gameplayPanel.add(lblPlayer2, gbc);
 
             gbc.gridx = 0;
-            gbc.gridy = 1;
+            gbc.gridy = 5;
             gbc.gridwidth = 1;
+            gbc.weighty= 1;
             gbc.insets = new Insets(0, 0, 0, 0);
             gameplayPanel.add(btnAttack1Player1, gbc);
 
@@ -245,7 +246,7 @@ public class Game extends JFrame {
             gameplayPanel.add(btnDefendPlayer2, gbc);
 
             gbc.gridx = 0;
-            gbc.gridy = 2;
+            gbc.gridy = 6;
             gameplayPanel.add(btnUltimatePlayer1, gbc);
 
             gbc.gridx = 1;
@@ -268,20 +269,23 @@ public class Game extends JFrame {
             JLabel lblPlayer2Name = new JLabel(player2Pokemon.getName());
 
             gbc.gridx = 0;
-            gbc.gridy = 4;
+            gbc.gridy = 3;
             gbc.gridwidth = 2;
             gameplayPanel.add(healthBarPlayer1, gbc);
 
-            gbc.gridx = 2;
+            gbc.gridx = 3;
             gbc.gridwidth = 2;
             gameplayPanel.add(healthBarPlayer2, gbc);
 
+            //gbc.gridheight = 1;
+            gbc.weighty= 1;
             gbc.gridx = 0;
-            gbc.gridy = 5;
-            gbc.gridwidth = 1;
+            gbc.gridy = 4;
+            gbc.gridwidth = 2;
             gameplayPanel.add(lblPlayer1Name, gbc);
 
-            gbc.gridx = 2;
+            gbc.weighty= 1;
+            gbc.gridx = 3;
             gbc.gridwidth = 1;
             gameplayPanel.add(lblPlayer2Name, gbc);
 
@@ -294,7 +298,7 @@ public class Game extends JFrame {
             timer.start();
 
             gbc.gridx = 0;
-            gbc.gridy = 3;
+            gbc.gridy = 9;
             gbc.gridwidth = 4;
             JButton btnBackToMenu = new JButton("Volver al Menú");
             btnBackToMenu.setPreferredSize(new Dimension(160, 60));
@@ -307,7 +311,7 @@ public class Game extends JFrame {
             messageTextArea.setWrapStyleWord(true);
 
             gbc.gridx = 0;
-            gbc.gridy = 6;
+            gbc.gridy = 8;
             gbc.gridwidth = 4;
             gbc.insets = new Insets(20, 0, 0, 0);
             JScrollPane messageScrollPane = new JScrollPane(messageTextArea);
