@@ -62,15 +62,25 @@ public class Game extends JFrame {
             }
         });
 
+        Font buttonFont = new Font("Monospaced", Font.BOLD, 20);
+
         btnAttack1Player1 = new JButton("Ataque Basico");
+        btnAttack1Player1.setFont(buttonFont);
         btnDefendPlayer1 = new JButton("Defender");
+        btnDefendPlayer1.setFont(buttonFont);
         btnUltimatePlayer1 = new JButton("Habilidad Definitiva");
+        btnUltimatePlayer1.setFont(buttonFont);
         btnHealPlayer1 = new JButton("Curar");
+        btnHealPlayer1.setFont(buttonFont);
 
         btnAttack1Player2 = new JButton("Ataque Basico");
+        btnAttack1Player2.setFont(buttonFont);
         btnDefendPlayer2 = new JButton("Defender");
+        btnDefendPlayer2.setFont(buttonFont);
         btnUltimatePlayer2 = new JButton("Habilidad Definitiva");
+        btnUltimatePlayer2.setFont(buttonFont);
         btnHealPlayer2 = new JButton("Curar");
+        btnHealPlayer2.setFont(buttonFont);
     }
 
     private JPanel createMainMenuPanel() {
@@ -170,7 +180,7 @@ public class Game extends JFrame {
         selectionPanel.setLayout(new BorderLayout());
 
         Font btnTitleFont = new Font("Monospaced", Font.BOLD, 60);
-        JLabel lblTitle = new JLabel("Selección de Pokémon");
+        JLabel lblTitle = new JLabel("SELECCION DE POKEMON");
         lblTitle.setFont(btnTitleFont);
         lblTitle.setForeground(Color.WHITE);
         lblTitle.setHorizontalAlignment(JLabel.CENTER);
@@ -277,7 +287,7 @@ public class Game extends JFrame {
             gameplayPanel.add(btnHealPlayer2, gbc);
 
 
-            Font playerNameFont = new Font("Arial", Font.BOLD, 32);
+            Font playerNameFont = new Font("Monospaced", Font.BOLD, 40);
             JProgressBar healthBarPlayer1 = new JProgressBar(0, 100);
             healthBarPlayer1.setStringPainted(true);
             healthBarPlayer1.setValue(100);
@@ -324,8 +334,10 @@ public class Game extends JFrame {
             gbc.gridx = 0;
             gbc.gridy = 9;
             gbc.gridwidth = 4;
+            Font btnMenu = new Font("Monospaced", Font.BOLD, 20);
             JButton btnBackToMenu = new JButton("Volver al Menú");
-            btnBackToMenu.setPreferredSize(new Dimension(160, 60));
+            btnBackToMenu.setFont(btnMenu);
+            btnBackToMenu.setPreferredSize(new Dimension(230, 60));
             gbc.insets = new Insets(70, 0, 0, 0);
             gameplayPanel.add(btnBackToMenu, gbc);
 
