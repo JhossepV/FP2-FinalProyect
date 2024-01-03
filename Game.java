@@ -90,7 +90,7 @@ public class Game extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 40, 0);
-        JLabel lblTitle = new JLabel("Juego por Turnos");
+        JLabel lblTitle = new JLabel("PVP POKEMON");
         lblTitle.setFont(new Font("Arial", Font.BOLD, 90));
         lblTitle.setForeground(Color.WHITE);
         mainMenuPanel.add(lblTitle, gbc);
