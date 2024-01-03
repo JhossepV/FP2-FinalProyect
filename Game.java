@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -79,7 +77,7 @@ public class Game extends JFrame {
         JPanel mainMenuPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/menu.jpeg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/menu.jpeg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -91,26 +89,33 @@ public class Game extends JFrame {
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 40, 0);
         JLabel lblTitle = new JLabel("Juego por Turnos");
-        lblTitle.setFont(new Font("Arial", Font.BOLD, 90));
+        lblTitle.setFont(new Font("Monospaced", Font.BOLD, 90));
         lblTitle.setForeground(Color.WHITE);
         mainMenuPanel.add(lblTitle, gbc);
 
+        Font buttonFont = new Font("Monospaced", Font.BOLD, 24);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.insets = new Insets(0, 0, 20, 0);
         JButton btnNewGame = new JButton("Nuevo Juego");
-        btnNewGame.setPreferredSize(new Dimension(200, 60));
+        btnNewGame.setFont(buttonFont);
+        btnNewGame.setForeground(Color.BLACK);
+        btnNewGame.setPreferredSize(new Dimension(300, 60));
         mainMenuPanel.add(btnNewGame, gbc);
 
         gbc.gridy = 2;
         JButton btnLoadGame = new JButton("Cargar Partida");
-        btnLoadGame.setPreferredSize(new Dimension(200, 60));
+        btnLoadGame.setFont(buttonFont);
+        btnLoadGame.setForeground(Color.BLACK);
+        btnLoadGame.setPreferredSize(new Dimension(300, 60));
         mainMenuPanel.add(btnLoadGame, gbc);
 
         gbc.gridy = 3;
         JButton btnExit = new JButton("Salir");
-        btnExit.setPreferredSize(new Dimension(200, 60));
+        btnExit.setFont(buttonFont);
+        btnExit.setForeground(Color.BLACK);
+        btnExit.setPreferredSize(new Dimension(300, 60));
         mainMenuPanel.add(btnExit, gbc);
 
         btnNewGame.addActionListener(new ActionListener() {
@@ -152,15 +157,16 @@ public class Game extends JFrame {
         JPanel selectionPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/selection2.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/selection2.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
 
         selectionPanel.setLayout(new BorderLayout());
 
+        Font btnTitleFont = new Font("Monospaced", Font.BOLD, 60);
         JLabel lblTitle = new JLabel("Selección de Pokémon");
-        lblTitle.setFont(new Font("Arial", Font.BOLD, 40));
+        lblTitle.setFont(btnTitleFont);
         lblTitle.setForeground(Color.WHITE);
         lblTitle.setHorizontalAlignment(JLabel.CENTER);
         selectionPanel.add(lblTitle, BorderLayout.NORTH);
@@ -175,8 +181,11 @@ public class Game extends JFrame {
             JLabel lblPokemon = new JLabel(pokemon.getSprite());
             pokemonPanel.add(lblPokemon, BorderLayout.CENTER);
 
+            Font buttonFont = new Font("Monospaced", Font.BOLD, 28);
             JButton btnSelectPokemon = new JButton("Seleccionar " + pokemon.getName());
             btnSelectPokemon.setPreferredSize(new Dimension(200, 60));
+            btnSelectPokemon.setFont(buttonFont);
+            //btnSelectPokemon.setForeground(Color.WHITE);
 
             btnSelectPokemon.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -212,7 +221,7 @@ public class Game extends JFrame {
         JPanel gameplayPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperBattle2.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/wallpaperBattle.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -262,15 +271,21 @@ public class Game extends JFrame {
             gbc.gridx = 3;
             gameplayPanel.add(btnHealPlayer2, gbc);
 
+
+            Font playerNameFont = new Font("Arial", Font.BOLD, 32);
             JProgressBar healthBarPlayer1 = new JProgressBar(0, 100);
             healthBarPlayer1.setStringPainted(true);
             healthBarPlayer1.setValue(100);
             JLabel lblPlayer1Name = new JLabel(player1Pokemon.getName());
+            lblPlayer1Name.setFont(playerNameFont);
+            lblPlayer1Name.setForeground(Color.WHITE);
 
             JProgressBar healthBarPlayer2 = new JProgressBar(0, 100);
             healthBarPlayer2.setStringPainted(true);
             healthBarPlayer2.setValue(100);
             JLabel lblPlayer2Name = new JLabel(player2Pokemon.getName());
+            lblPlayer2Name.setFont(playerNameFont);
+            lblPlayer2Name.setForeground(Color.WHITE);
 
             gbc.gridx = 0;
             gbc.gridy = 3;
@@ -414,7 +429,7 @@ public class Game extends JFrame {
         JPanel finalPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/final.png");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/final.png");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
