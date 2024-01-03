@@ -88,8 +88,8 @@ public class Game extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 40, 0);
-        JLabel lblTitle = new JLabel("Juego por Turnos");
-        lblTitle.setFont(new Font("Monospaced", Font.BOLD, 90));
+        JLabel lblTitle = new JLabel("PVP POKEMON");
+        lblTitle.setFont(new Font("Arial", Font.BOLD, 90));
         lblTitle.setForeground(Color.WHITE);
         mainMenuPanel.add(lblTitle, gbc);
 
@@ -127,6 +127,11 @@ public class Game extends JFrame {
         btnLoadGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //GUARDAR PARTIDA
+                ///
+                /////
+                ///////
+                /////////
+                /////////////
                 cardLayout.show(cardPanel, "Selection");
             }
         });
@@ -396,7 +401,7 @@ public class Game extends JFrame {
             btnUltimatePlayer1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if (isPlayer1Turn) {
-                        player1Pokemon.attack(player2Pokemon, player1Pokemon.getAttacks().get(1));
+                        player1Pokemon.attack(player2Pokemon, player1Pokemon.getAttacks().get(0));
                         switchTurns();
                     }
                 }
@@ -405,7 +410,7 @@ public class Game extends JFrame {
             btnUltimatePlayer2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if (!isPlayer1Turn) {
-                        player2Pokemon.attack(player1Pokemon, player2Pokemon.getAttacks().get(1));
+                        player2Pokemon.attack(player1Pokemon, player2Pokemon.getAttacks().get(0));
                         switchTurns();
                     }
                 }
