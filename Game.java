@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,7 +79,7 @@ public class Game extends JFrame {
         JPanel mainMenuPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/menu.jpeg");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/menu.jpeg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -150,7 +152,7 @@ public class Game extends JFrame {
         JPanel selectionPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/selection.jpg");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/selection2.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -159,7 +161,7 @@ public class Game extends JFrame {
 
         JLabel lblTitle = new JLabel("Selección de Pokémon");
         lblTitle.setFont(new Font("Arial", Font.BOLD, 40));
-        lblTitle.setForeground(Color.BLUE);
+        lblTitle.setForeground(Color.WHITE);
         lblTitle.setHorizontalAlignment(JLabel.CENTER);
         selectionPanel.add(lblTitle, BorderLayout.NORTH);
 
@@ -210,7 +212,7 @@ public class Game extends JFrame {
         JPanel gameplayPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/wallpaperBattle2.jpg");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/wallpaperBattle2.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -412,7 +414,7 @@ public class Game extends JFrame {
         JPanel finalPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/final.png");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/final.png");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
