@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+// Para una mejor experiencia, maximizar la ventana del juego
+
 public class Game extends JFrame {
     private CardLayout cardLayout;
     private JPanel cardPanel;
@@ -403,6 +405,55 @@ public class Game extends JFrame {
         updateButtonVisibility();
 
         return gameplayPanel;
+    }
+
+    // Panel para el final de la partida (agregar logica para que aparezca cuando gane un jugador)
+    private JPanel createFinalPanel() {
+        JPanel finalPanel = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/final.png");
+                g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+
+        finalPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 0, 40, 0);
+        JLabel lblTitle = new JLabel("Fin de la Partida");
+        lblTitle.setFont(new Font("Arial", Font.BOLD, 90));
+        lblTitle.setForeground(Color.WHITE);
+        finalPanel.add(lblTitle, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(0, 0, 20, 0);
+        JButton btnNewGame = new JButton("Nuevo Juego");
+        btnNewGame.setPreferredSize(new Dimension(200, 60));
+        finalPanel.add(btnNewGame, gbc);
+
+        gbc.gridy = 2;
+        JButton btnExit = new JButton("Salir");
+        btnExit.setPreferredSize(new Dimension(200, 60));
+        finalPanel.add(btnExit, gbc);
+
+        btnNewGame.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "Selection");
+            }
+        });
+
+        btnExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        return finalPanel;
     }
 
     private void updateButtonVisibility() {
