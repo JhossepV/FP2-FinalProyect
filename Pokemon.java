@@ -130,7 +130,7 @@ public class Pokemon {
         return 0;
     }
 
-        public double getHpPercentage() {
+    public double getHpPercentage() {
         return (double) hp / MAX_HP;
     }
 
