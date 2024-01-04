@@ -106,13 +106,13 @@ public class Pokemon {
 
     public int getBasicDamage() {
         if (name.equals("Pikachu")) {
-            return 30;
+            return 20;
         } else if (name.equals("Bulbasaur")) {
+            return 15;
+        } else if (name.equals("Charmander")) {
             return 25;
-        } else if (name.equals("Charizard")) {
-            return 35;
         } else if (name.equals("Squirtle")) {
-            return 40;
+            return 30;
         }
         return 0;
     }
@@ -122,7 +122,7 @@ public class Pokemon {
             return (int) (hp * 2 / 5);
         } else if (name.equals("Bulbasaur")) {
             return 30;
-        } else if (name.equals("Charizard")) {
+        } else if (name.equals("Charmander")) {
             return 50;
         } else if (name.equals("Squirtle")) {
             return 45;
