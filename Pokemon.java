@@ -1,10 +1,11 @@
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pokemon {
+public class Pokemon implements Serializable {
     private static final int MAX_HP = 100;
     private String name;
     private int level;

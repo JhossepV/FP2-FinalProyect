@@ -2,6 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 // Para una mejor experiencia, maximizar la ventana del juego
@@ -136,13 +141,8 @@ public class Game extends JFrame {
 
         btnLoadGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //GUARDAR PARTIDA
-                ///
-                /////
-                ///////
-                /////////
-                /////////////
-                cardLayout.show(cardPanel, "Selection");
+                loadGameState();
+                cardLayout.show(cardPanel, "Gameplay");
             }
         });
 
@@ -166,6 +166,32 @@ public class Game extends JFrame {
             }
         }
         return null;
+    }
+
+    private void saveGameState() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("FP2-FinalProyect/Save/gamestate.ser"))) {
+            GameState gameState = new GameState(player1Pokemon, player2Pokemon, isPlayer1Turn,
+                    defenseCooldownPlayer1, defenseCooldownPlayer2);
+            oos.writeObject(gameState);
+            System.out.println("Partida guardada exitosamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadGameState() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("FP2-FinalProyect/Save/ggamestate.ser"))) {
+            GameState gameState = (GameState) ois.readObject();
+            player1Pokemon = gameState.getPlayer1Pokemon();
+            player2Pokemon = gameState.getPlayer2Pokemon();
+            isPlayer1Turn = gameState.isPlayer1Turn();
+            defenseCooldownPlayer1 = gameState.getDefenseCooldownPlayer1();
+            defenseCooldownPlayer2 = gameState.getDefenseCooldownPlayer2();
+
+            System.out.println("Partida cargada exitosamente.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private JPanel createSelectionPanel(ArrayList<Pokemon> allPokemon) {
@@ -353,6 +379,20 @@ public class Game extends JFrame {
             JScrollPane messageScrollPane = new JScrollPane(messageTextArea);
             messageScrollPane.setPreferredSize(new Dimension(400, 100));
             gameplayPanel.add(messageScrollPane, gbc);
+
+            JButton btnSaveGame = new JButton("Guardar");
+            btnSaveGame.setFont(btnMenu);
+            btnSaveGame.setPreferredSize(new Dimension(200, 60));
+            gbc.gridx = 3;
+            gbc.gridy = 9;
+            gbc.gridwidth = 2;
+            gameplayPanel.add(btnSaveGame, gbc);
+
+            btnSaveGame.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    saveGameState();
+                }
+            });
 
             btnHealPlayer1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
