@@ -104,7 +104,7 @@ public class Game extends JFrame {
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 0, 40, 0);
         JLabel lblTitle = new JLabel("PVP POKEMON");
-        lblTitle.setFont(new Font("Arial", Font.BOLD, 90));
+        lblTitle.setFont(new Font("Monospaced", Font.BOLD, 100));
         lblTitle.setForeground(Color.WHITE);
         mainMenuPanel.add(lblTitle, gbc);
 
