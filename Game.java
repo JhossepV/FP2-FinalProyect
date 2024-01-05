@@ -497,7 +497,7 @@ public class Game extends JFrame {
         JLabel lblWinner = new JLabel(winnerText);
         lblWinner.setFont(new Font("Monospaced", Font.BOLD, 90));  
         lblWinner.setForeground(new Color(255, 215, 0));
-        lblWinner.setBorder(new LineBorder(Color.BLACK, 4));
+        lblWinner.setBorder(new LineBorder(Color.WHITE, 4));
         lblWinner.setVerticalAlignment(JLabel.CENTER);
         lblWinner.setHorizontalAlignment(JLabel.CENTER);
         JPanel finalPanel = (JPanel) cardPanel.getComponent(2);
