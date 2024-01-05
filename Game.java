@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,6 +58,9 @@ public class Game extends JFrame {
         JPanel selectionPanel = createSelectionPanel(allPokemon);
         cardPanel.add(selectionPanel, "Selection");
 
+        JPanel finalPanel = createFinalPanel();
+        cardPanel.add(finalPanel, "Final");
+
         cardLayout.show(cardPanel, "MainMenu");
 
         add(cardPanel);
@@ -92,7 +97,7 @@ public class Game extends JFrame {
         JPanel mainMenuPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/menu.jpeg");
+                ImageIcon backgroundImage = new ImageIcon("menu.jpeg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -169,7 +174,7 @@ public class Game extends JFrame {
     }
 
     private void saveGameState() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("FP2-FinalProyect/Save/gamestate.ser"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("gamestate.ser"))) {
             GameState gameState = new GameState(player1Pokemon, player2Pokemon, isPlayer1Turn,
                     defenseCooldownPlayer1, defenseCooldownPlayer2);
             oos.writeObject(gameState);
@@ -180,7 +185,7 @@ public class Game extends JFrame {
     }
 
     private void loadGameState() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("FP2-FinalProyect/Save/ggamestate.ser"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("gamestate.ser"))) {
             GameState gameState = (GameState) ois.readObject();
             player1Pokemon = gameState.getPlayer1Pokemon();
             player2Pokemon = gameState.getPlayer2Pokemon();
@@ -198,7 +203,7 @@ public class Game extends JFrame {
         JPanel selectionPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/selection2.jpg");
+                ImageIcon backgroundImage = new ImageIcon("selection2.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -226,7 +231,7 @@ public class Game extends JFrame {
             JButton btnSelectPokemon = new JButton("Seleccionar " + pokemon.getName());
             btnSelectPokemon.setPreferredSize(new Dimension(200, 60));
             btnSelectPokemon.setFont(buttonFont);
-            //btnSelectPokemon.setForeground(Color.WHITE);
+            // btnSelectPokemon.setForeground(Color.WHITE);
 
             btnSelectPokemon.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -262,7 +267,7 @@ public class Game extends JFrame {
         JPanel gameplayPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/wallpaperBattle.jpg");
+                ImageIcon backgroundImage = new ImageIcon("wallpaperBattle.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -286,7 +291,7 @@ public class Game extends JFrame {
             gbc.gridx = 0;
             gbc.gridy = 5;
             gbc.gridwidth = 1;
-            gbc.weighty= 1;
+            gbc.weighty = 1;
             gbc.insets = new Insets(0, 0, 0, 0);
             gameplayPanel.add(btnAttack1Player1, gbc);
 
@@ -312,7 +317,6 @@ public class Game extends JFrame {
             gbc.gridx = 3;
             gameplayPanel.add(btnHealPlayer2, gbc);
 
-
             Font playerNameFont = new Font("Monospaced", Font.BOLD, 40);
             JProgressBar healthBarPlayer1 = new JProgressBar(0, 100);
             healthBarPlayer1.setStringPainted(true);
@@ -337,20 +341,21 @@ public class Game extends JFrame {
             gbc.gridwidth = 2;
             gameplayPanel.add(healthBarPlayer2, gbc);
 
-            //gbc.gridheight = 1;
-            gbc.weighty= 1;
+            // gbc.gridheight = 1;
+            gbc.weighty = 1;
             gbc.gridx = 0;
             gbc.gridy = 4;
             gbc.gridwidth = 2;
             gameplayPanel.add(lblPlayer1Name, gbc);
 
-            gbc.weighty= 1;
+            gbc.weighty = 1;
             gbc.gridx = 3;
             gbc.gridwidth = 1;
             gameplayPanel.add(lblPlayer2Name, gbc);
 
             Timer timer = new Timer(100, new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    checkGameOver();
                     player1Pokemon.updateHealthBar(healthBarPlayer1);
                     player2Pokemon.updateHealthBar(healthBarPlayer2);
                 }
@@ -449,7 +454,6 @@ public class Game extends JFrame {
                     }
                 }
             });
-
             btnUltimatePlayer1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     if (isPlayer1Turn) {
@@ -481,16 +485,37 @@ public class Game extends JFrame {
         return gameplayPanel;
     }
 
-    // Panel para el final de la partida (agregar logica para que aparezca cuando gane un jugador)
+    private void checkGameOver() {
+        if (player1Pokemon.getHp() <= 0) {
+            showFinalScreen("Gana Jugador 2");
+        } else if (player2Pokemon.getHp() <= 0) {
+            showFinalScreen("Gana Jugador 1");
+        }
+    }
+
+    private void showFinalScreen(String winnerText) {
+        JLabel lblWinner = new JLabel(winnerText);
+        lblWinner.setFont(new Font("Serif", Font.BOLD, 80));  
+        lblWinner.setForeground(new Color(255, 215, 0));
+        lblWinner.setBorder(new LineBorder(Color.BLACK, 5));
+        lblWinner.setVerticalAlignment(JLabel.CENTER);
+        lblWinner.setHorizontalAlignment(JLabel.CENTER);
+        JPanel finalPanel = (JPanel) cardPanel.getComponent(2);
+        finalPanel.removeAll();
+        finalPanel.add(lblWinner);
+        cardLayout.show(cardPanel, "Final");
+    }
+
+    // Panel para el final de la partida (agregar logica para que aparezca cuando
+    // gane un jugador)
     private JPanel createFinalPanel() {
         JPanel finalPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/final.png");
+                ImageIcon backgroundImage = new ImageIcon("final.png");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
-
         finalPanel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -535,7 +560,6 @@ public class Game extends JFrame {
         btnDefendPlayer1.setEnabled(isPlayer1Turn && defenseCooldownPlayer2 == 0);
         btnUltimatePlayer1.setEnabled(isPlayer1Turn);
         btnHealPlayer1.setEnabled(isPlayer1Turn);
-
         btnAttack1Player2.setEnabled(!isPlayer1Turn);
         btnDefendPlayer2.setEnabled(!isPlayer1Turn && defenseCooldownPlayer1 == 0);
         btnUltimatePlayer2.setEnabled(!isPlayer1Turn);
@@ -546,7 +570,6 @@ public class Game extends JFrame {
         if (defenseCooldownPlayer1 > 0) {
             defenseCooldownPlayer1--;
         }
-
         if (defenseCooldownPlayer2 > 0) {
             defenseCooldownPlayer2--;
         }
