@@ -495,9 +495,9 @@ public class Game extends JFrame {
 
     private void showFinalScreen(String winnerText) {
         JLabel lblWinner = new JLabel(winnerText);
-        lblWinner.setFont(new Font("Serif", Font.BOLD, 80));  
+        lblWinner.setFont(new Font("Monospaced", Font.BOLD, 90));  
         lblWinner.setForeground(new Color(255, 215, 0));
-        lblWinner.setBorder(new LineBorder(Color.BLACK, 5));
+        lblWinner.setBorder(new LineBorder(Color.BLACK, 4));
         lblWinner.setVerticalAlignment(JLabel.CENTER);
         lblWinner.setHorizontalAlignment(JLabel.CENTER);
         JPanel finalPanel = (JPanel) cardPanel.getComponent(2);
@@ -506,13 +506,12 @@ public class Game extends JFrame {
         cardLayout.show(cardPanel, "Final");
     }
 
-    // Panel para el final de la partida (agregar logica para que aparezca cuando
-    // gane un jugador)
+    // Panel para el final de la partida
     private JPanel createFinalPanel() {
         JPanel finalPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("final.png");
+                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/final.png");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
