@@ -97,7 +97,7 @@ public class Game extends JFrame {
         JPanel mainMenuPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("menu.jpeg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/menu.jpeg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -174,7 +174,7 @@ public class Game extends JFrame {
     }
 
     private void saveGameState() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("gamestate.ser"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Save/gamestate.ser"))) {
             GameState gameState = new GameState(player1Pokemon, player2Pokemon, isPlayer1Turn,
                     defenseCooldownPlayer1, defenseCooldownPlayer2);
             oos.writeObject(gameState);
@@ -203,7 +203,7 @@ public class Game extends JFrame {
         JPanel selectionPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("selection2.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/selection2.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -267,7 +267,7 @@ public class Game extends JFrame {
         JPanel gameplayPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("wallpaperBattle.jpg");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/wallpaperBattle.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -511,7 +511,7 @@ public class Game extends JFrame {
         JPanel finalPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("Images/Wallpaper/final.png");
+                ImageIcon backgroundImage = new ImageIcon("C:/Users/DELL/Documents/dev/WorkStation/FP2-FinalProyect/Images/Wallpaper/final.png");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
